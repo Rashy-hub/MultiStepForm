@@ -28,6 +28,8 @@ const MultiStepForm = () => {
     const [step, setStep] = useState(0)
 
     const handleSubmit = (values, { resetForm }) => {
+        console.log('Form values before sending:', values) // Debugging line
+
         emailjs
             .send(
                 'service_multistepform',
@@ -47,10 +49,7 @@ const MultiStepForm = () => {
             )
     }
 
-    const handleNext = (setFieldValue) => {
-        if (step === 1) {
-            setFieldValue('review', undefined) // Ensure review is set
-        }
+    const handleNext = () => {
         setStep(step + 1)
     }
 
@@ -70,7 +69,7 @@ const MultiStepForm = () => {
                 validationSchema={validationSchema[step]}
                 onSubmit={handleSubmit}
             >
-                {({ values, setFieldValue }) => (
+                {({ values }) => (
                     <Form className="bg-white p-6 rounded shadow-lg">
                         {step === 0 && (
                             <div>
@@ -205,9 +204,7 @@ const MultiStepForm = () => {
                                 {step < 2 ? (
                                     <button
                                         type="button"
-                                        onClick={() =>
-                                            handleNext(setFieldValue)
-                                        }
+                                        onClick={handleNext}
                                         className="bg-blue-500 text-white px-4 py-2 rounded shadow hover:bg-blue-600"
                                     >
                                         Next
