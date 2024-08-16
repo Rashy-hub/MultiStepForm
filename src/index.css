@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+/* Custom global styles */
+html {
+    scroll-behavior: smooth;
+    overflow-y: hidden;
+}
+
+body {
+    @apply bg-gray-100 text-gray-800 font-sans;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    height: 100vh;
+}
+
+img {
+    @apply max-w-full h-auto;
+    display: block;
+}
+@tailwind utilities;
