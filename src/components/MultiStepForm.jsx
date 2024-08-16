@@ -34,7 +34,10 @@ const MultiStepForm = () => {
             .send(
                 'service_multistepform',
                 'template_q189z7g',
-                values,
+                {
+                    ...values, // Include all form values
+                    to_email: values.email, // Add the user's email address to the data
+                },
                 'lPzIFpCSEZmhOb89o'
             )
             .then(
